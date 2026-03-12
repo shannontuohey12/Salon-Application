@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/2.0.0/css/all.min.css"></head>
+<header> <!-- added a header, contains navbar -->
+        <nav class ="navbar">
+            <div class = logo>
+                <a href="register.html"> <i class="fa-regular fa-scissors"></i> </a>
+            </div>
+            
+            <ul class ="nav-links">
+                <li><a href="register.html">Sign Up</a></li>
+                <li><a href="login.html">Log In</a></li>
+                <li><a href="bookApt.html"> Book Appointment </a></li>
+            </ul>
+        </nav>
+</header>
+<body>
+    <h1>Book Appointment</h1>
+    <div class = "assignment-image">
+        <img src="Images/hair.jpg" alt="Image of hair being curled">
+    </div>
+    <br>
+    <form>
+            
+             <label for="text">Appointment Type</label>
+             <input type="text" id="text"> 
+             
+             <label for="date">Appointment Date</label>
+            <input type="date" id="date">
+            <label for="time">Appointment Time </label>
+            <input type="time" id="time">
+            
+             
+             <input type="submit" value="Book Appointment">
+
+    </form>

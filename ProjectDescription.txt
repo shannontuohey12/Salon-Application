@@ -1,14 +1,12 @@
-My project idea is creating an assignment tracker. The purpose of the 
-application is to allow the user to create assignments and note the difficulty
-of each assignment, the priority, the due date, and a description. Users will also be able
-to edit each assignment after it is created. Once a user completes an assignment, 
-they can check it off and it will be archived/deleted. 
+My project idea is creating a website for a salon business. This would include a user 
+profile that can be logged into, or creating a new account. There also would be A
+function to book a new appointment and to leave a review. 
 
-The intended user of this system is a student or employee who has many deadlines. 
-A lot of assignments can be overwhelming, so my assignment tracker will organize 
-assignments based on deadlines and priority. 
+The intended user of this system is someone who is looking to book appointments for 
+a salon, the main demographic is women in their 20s and 30s. Another intended user
+is the owners and employees of the salon to see what is being booked and create availabilities.
+I want the website to have an elegant look. 
 
-The users will be able to create, edit, and delete assignments. They also 
+The users will be able to create, edit, and delete appointments. They also 
 will be able to sign up for an account with my system so all their data is stored
-and useable on multiple devices. I would also like to add a search funtionality
-where users can find older tasks, etc. 
+and useable on multiple devices. 
