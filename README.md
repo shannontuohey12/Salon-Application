@@ -15,7 +15,7 @@ This Salon Application is a web app that allows customers to create accounts, bo
 
 This Entity Relationship Diagram shows the relations between different entities, their attributes, and cardinalities. The business rules explain in words how each relation will work.
 
-![ERD Digram](./Images/salonERDdiagram.jpeg)
+![ERD Digram](./Images/finalsalonERD.jpeg)
 
 ## Relations Diagram
 
