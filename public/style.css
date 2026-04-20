@@ -106,7 +106,6 @@ body{
     align-content: center;
     flex-direction: column;
     background-image: url("Images/salonbg2.jpg");
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 
     background-attachment: fixed;
     background-size: cover;
