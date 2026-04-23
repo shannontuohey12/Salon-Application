@@ -1,0 +1,29 @@
+{
+  "name": "wdpproject",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/shannontuohey12/Salon-Application#readme",
+  "bugs": {
+    "url": "https://github.com/shannontuohey12/Salon-Application/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shannontuohey12/Salon-Application.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mysql2": "^3.22.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

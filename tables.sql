@@ -1,6 +1,7 @@
 create database SalonApp; 
 
 use SalonApp; 
+show tables;
 
 CREATE TABLE IF NOT EXISTS customer (
 	customerID INT PRIMARY KEY, 
