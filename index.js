@@ -8,6 +8,10 @@ const customerRoutes = require("./server/routes/customer")
 app.use("/customers", customerRoutes)
 const stylistRoutes = require("./server/routes/stylist")
 app.use("/stylists", stylistRoutes)
+const appointmentRoutes = require("./server/routes/appointment")
+app.use("/appointments", appointmentRoutes)
+const reviewRoutes = require("./server/routes/review")
+app.use("/reviews", reviewRoutes)
 
 //instead of having a domain name, 
 
