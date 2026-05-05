@@ -17,9 +17,23 @@ async function createAppointmentTable() {
 
 createAppointmentTable();
 
+async function bookAppointment(appointment) {
+  let sql = `INSERT INTO appointment (appointmentDate, appointmentTime, service, stylistID, customerID) VALUES (?, ?, ?, ?, ?);`
+  await con.query(sql, [appointment.appointmentDate, appointment.appointmentTime, appointment.service, appointment.stylistID, appointment.customerID]);
+}
+
+async function cancelAppointment(appointmentID) {
+  let sql = `DELETE FROM appointment WHERE appointmentID = ?;`
+  await con.query(sql, [appointmentID]);
+}
+
+async function updateAppointment(appointment) {
+  let sql = `UPDATE appointment SET appointmentDate = ?, appointmentTime = ?, service = ?, stylistID = ?, customerID = ? WHERE appointmentID = ?;`
+  await con.query(sql, [appointment.appointmentDate, appointment.appointmentTime, appointment.service, appointment.stylistID, appointment.customerID, appointment.appointmentID]);
+}
 async function getAllAppointments() {
-    let sql = `SELECT * FROM appointments;`
+    let sql = `SELECT * FROM appointment;`
     await con.query(sql)
 }
 
-module.exports = {getAllAppointments}
+module.exports = {getAllAppointments, bookAppointment, cancelAppointment, updateAppointment}

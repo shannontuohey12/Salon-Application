@@ -4,7 +4,7 @@ const app = express()
 
 app.use(express.json())
 
-const customerRoutes = require("./server/routes/customer")
+const customerRoutes = require("./server/routes/user")
 app.use("/customers", customerRoutes)
 const stylistRoutes = require("./server/routes/stylist")
 app.use("/stylists", stylistRoutes)
