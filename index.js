@@ -4,14 +4,19 @@ const app = express()
 
 app.use(express.json())
 
-const customerRoutes = require("./server/routes/user")
-app.use("/customers", customerRoutes)
-const stylistRoutes = require("./server/routes/stylist")
-app.use("/stylists", stylistRoutes)
+const userRoutes = require("./server/routes/user")
+
+// CORS middleware
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    next();
+}) 
+app.use("/users", userRoutes)
 const appointmentRoutes = require("./server/routes/appointment")
 app.use("/appointments", appointmentRoutes)
-const reviewRoutes = require("./server/routes/review")
-app.use("/reviews", reviewRoutes)
+
 
 //instead of having a domain name, 
 
