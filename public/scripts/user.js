@@ -1,0 +1,83 @@
+let form = document.getElementById("loginForm");
+
+if(loginForm) form.addEventListener('submit', login);
+
+function login(e){
+    e.preventDefault(); //default is to page refresh so this stops it
+
+    let email = document.getElementById("email").value
+    let password = document.getElementById("passwd").value
+    if(checkPassword(password)){
+        const user = {
+            email: email,
+            password: password
+        }
+
+        //fetch call for POST (login)
+        fetchData('/users/login', user, 'POST')
+        .then(data => {
+            if(!data.message) {
+                window.location = "bookApt.html"
+            }
+        })
+        .catch(err => {
+            let error = document.getElementById("error");
+            error.innerText = err.message;
+            document.getElementById("passwd").value = "";
+        })
+    } else{
+        console.log("Please enter a better password...")
+    }
+}
+function register(e){
+    e.preventDefault(); //default is to page refresh so this stops it
+
+    let firstName = document.getElementById("firstName").value
+    let lastName = document.getElementById("lastName").value
+    let email = document.getElementById("email").value
+    let password = document.getElementById("passwd").value
+    if(checkPassword(password)){
+        const user = {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password
+        }
+
+        //fetch call for POST (register)
+        fetchData('/users/register', user, 'POST')
+        .then(data => {
+            if(!data.message) {
+                window.location = "bookApt.html"
+            }
+        })
+        .catch(err => {
+            let error = document.getElementById("error");
+            error.innerText = err.message;
+            document.getElementById("passwd").value = "";
+        })
+    } else{
+        console.log("Please enter a better password...")
+    }
+}
+
+
+function checkPassword(password){
+    return true;
+}
+
+//fetchData function: use for POST, GET, PUT, DELETE requests
+async function fetchData(route = '', data = {}, methodType) {
+    const response = await fetch(`http://localhost:3500${route}`, {
+        method: methodType,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    if(response.ok) {
+        return await response.json();
+    } else {
+        throw await response.json();
+    }
+}
