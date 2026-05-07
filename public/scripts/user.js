@@ -1,12 +1,18 @@
-let form = document.getElementById("loginForm");
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
 
-if(loginForm) form.addEventListener('submit', login);
+if(loginForm) {
+    loginForm.addEventListener('submit', login);
+}
+if(registerForm) {
+    registerForm.addEventListener('submit', register);
+}
 
 function login(e){
     e.preventDefault(); //default is to page refresh so this stops it
 
     let email = document.getElementById("email").value
-    let password = document.getElementById("passwd").value
+    let password = document.getElementById("password").value
     if(checkPassword(password)){
         const user = {
             email: email,
@@ -17,6 +23,7 @@ function login(e){
         fetchData('/users/login', user, 'POST')
         .then(data => {
             if(!data.message) {
+                setCurrentUser(data);
                 window.location = "bookApt.html"
             }
         })
@@ -35,19 +42,20 @@ function register(e){
     let firstName = document.getElementById("firstName").value
     let lastName = document.getElementById("lastName").value
     let email = document.getElementById("email").value
-    let password = document.getElementById("passwd").value
+    let password = document.getElementById("password").value
     if(checkPassword(password)){
         const user = {
             firstName: firstName,
             lastName: lastName,
             email: email,
-            password: password
+            password: password,
         }
 
         //fetch call for POST (register)
         fetchData('/users/register', user, 'POST')
         .then(data => {
             if(!data.message) {
+                setCurrentUser(data);
                 window.location = "bookApt.html"
             }
         })
@@ -59,6 +67,8 @@ function register(e){
     } else{
         console.log("Please enter a better password...")
     }
+
+   
 }
 
 function updateUser(e){
@@ -108,6 +118,17 @@ function checkPassword(password){
     return true;
 }
 
+function setCurrentUser(user) {
+    localStorage.setItem('user', JSON.stringify(user));
+}
+
+function getCurrentUser() {
+    return JSON.parse(localStorage.getItem('user'));
+}
+
+function removeCurrentUser() {
+    localStorage.removeItem('user');
+}
 //fetchData function: use for POST, GET, PUT, DELETE requests
 async function fetchData(route = '', data = {}, methodType) {
     const response = await fetch(`http://localhost:3500${route}`, {
@@ -117,9 +138,13 @@ async function fetchData(route = '', data = {}, methodType) {
         },
         body: JSON.stringify(data)
     });
+
+    const result = await response.json();
+
     if(response.ok) {
-        return await response.json();
+        return result
     } else {
-        throw await response.json();
+        throw new Error(result.message || "Request failed");
     }
 }
+

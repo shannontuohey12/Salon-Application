@@ -4,6 +4,7 @@ const app = express()
 
 app.use(express.json())
 
+
 const userRoutes = require("./server/routes/user")
 
 // CORS middleware
@@ -18,6 +19,8 @@ const appointmentRoutes = require("./server/routes/appointment")
 app.use("/appointments", appointmentRoutes)
 
 
+app.use(express.static(__dirname + "/public"));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'home.html')));
 //instead of having a domain name, 
 
 const PORT = process.env.PORT || 3500

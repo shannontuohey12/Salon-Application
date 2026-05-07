@@ -8,7 +8,8 @@ router
         const appointments = await User.getAllAppointments()
         res.send(appointments)
     } catch (error) {
-        res.status(401).send({message: error.message});
+        console.log("GET APPOINTMENTS ERROR:", error);
+        res.status(400).send({message: error.message});
     }
 })
 
@@ -16,8 +17,10 @@ router
     try {
         await User.bookAppointment(req.body);
         res.send({message: "Appointment booked successfully"});
+        console.log("APPOINTMENT BOOKED:", req.body);
     } catch (error) {
-        res.status(401).send({message: error.message});
+            console.log("APPOINTMENT ERROR:", error);
+        res.status(400).send({message: error.message});
     }
 })
 

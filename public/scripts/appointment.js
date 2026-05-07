@@ -16,7 +16,7 @@ function bookApt(e){
             time: time
         }
 
-        fetchData('/appointments/book', user, 'POST')
+        fetchData('/appointments/bookAppointment', user, 'POST')
         .then(data => {
             if(!data.message) {
                 window.location = "home.html"

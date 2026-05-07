@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 
+
+
 router
 .get('/getallUsers', async (req, res) => {
     try { 
@@ -22,12 +24,16 @@ router
 })
 
 .post('/register', async (req, res) => {
+    console.log("REGISTER HIT")
+    console.log(req.body)
     try {
         const user = await User.register(req.body);
-        res.send({...user, password: undefined});
+        res.send({firstName: user.firstName, lastName: user.lastName, email: user.email, password: undefined});
     } catch (error) {
-        res.status(401).send({message: error.message});
+        console.log("REGISTER ERROR:", error.message);
+    res.status(400).send({ message: error.message });
     }
+
 })
 
 .put('/updateUser', async (req, res) => {
