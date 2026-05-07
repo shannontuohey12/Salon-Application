@@ -61,6 +61,48 @@ function register(e){
     }
 }
 
+function updateUser(e){
+    e.preventDefault(); //default is to page refresh so this stops it
+
+    let firstName = document.getElementById("firstName").value
+    let lastName = document.getElementById("lastName").value
+    let email = document.getElementById("email").value
+    let password = document.getElementById("passwd").value
+    if(checkPassword(password)){
+        const user = {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password
+        }
+
+        //fetch call for PUT (update user)
+        fetchData('/users/updateUser', user, 'PUT')
+        .then(data => {
+            if(!data.message) {
+                window.location = "bookApt.html"
+            }
+        })
+        .catch(err => {
+            let error = document.getElementById("error");
+            error.innerText = err.message;
+            document.getElementById("passwd").value = "";
+        })
+    } else{
+        console.log("Please enter a better password...")
+    }
+}   
+
+function getAllUsers() {
+    //fetch call for GET (get all users)
+    fetchData('/users/getallUsers', {}, 'GET')
+    .then(data => {
+        console.log(data);
+    })
+    .catch(err => {
+        console.log(err.message);
+    })
+}
 
 function checkPassword(password){
     return true;
