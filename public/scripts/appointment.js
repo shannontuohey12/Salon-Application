@@ -5,15 +5,15 @@ function bookApt(e){
     e.preventDefault(); //default is to page refresh so this stops it
 
     let aptType = document.getElementById("aptType").value
-    let date = document.getElementById("date").value
-    let time = document.getElementById("time").value
+    let appointmentDate = document.getElementById("date").value
+    let appointmentTime = document.getElementById("time").value
 
 
-    if(aptType && date && time){
+    if(aptType && appointmentDate && appointmentTime){
         const user = {
-            aptType: aptType,
-            date: date,
-            time: time
+            service: aptType,
+            appointmentDate: appointmentDate,
+            appointmentTime: appointmentTime
         }
 
         fetchData('/appointments/bookAppointment', user, 'POST')
@@ -62,15 +62,15 @@ function updateApt(e){
 
     let aptID = document.getElementById("aptID").value
     let aptType = document.getElementById("aptType").value
-    let date = document.getElementById("date").value
-    let time = document.getElementById("time").value
+    let appointmentDate = document.getElementById("date").value
+    let appointmentTime = document.getElementById("time").value
 
-    if(aptID && aptType && date && time){
+    if(aptID && aptType && appointmentDate && appointmentTime){
         const user = {
             aptID: aptID,
             aptType: aptType,
-            date: date,
-            time: time
+            appointmentDate: appointmentDate,
+            appointmentTime: appointmentTime
         }
 
         fetchData('/appointments/update', user, 'POST')

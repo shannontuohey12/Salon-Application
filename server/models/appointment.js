@@ -3,8 +3,8 @@ const con = require("./db_connect");
 async function createAppointmentTable() {
   let sql = `CREATE TABLE IF NOT EXISTS appointment(
 	appointmentID INT AUTO_INCREMENT PRIMARY KEY, 
-    appointmentDate VARCHAR(8),
-    appointmentTime VARCHAR(8),
+    appointmentDate VARCHAR(20),
+    appointmentTime VARCHAR(20),
     service VARCHAR(20),
     userID INT,
     FOREIGN KEY (userID) references user(userID)
