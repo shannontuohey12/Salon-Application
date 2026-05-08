@@ -20,6 +20,6 @@ This Entity Relationship Diagram shows the relations between different entities,
 The relations diagram shows how the entities from the ERD are translated into relational tables. It defines how the data will be structured and linked in the database. The relations in this design are in 1NF because there are no multivalued attributes and every attriubute is atomic. It is also in 2NF because each column is directly related to the primary key, and in 3NF because there are no transitive dependencies, as all non-key attributes are independant of eachother.
 
 
-![ERD Digram](./Images/shanSalonDiagram.jpeg)
+![ERD & Relations Diagram](./Images/shanSalonDiagram.jpeg)
 
 
