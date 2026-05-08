@@ -1,12 +1,15 @@
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
 
+
 if(loginForm) {
     loginForm.addEventListener('submit', login);
 }
 if(registerForm) {
     registerForm.addEventListener('submit', register);
 }
+
+
 
 function login(e){
     e.preventDefault(); //default is to page refresh so this stops it
@@ -118,11 +121,11 @@ function checkPassword(password){
     return true;
 }
 
-function setCurrentUser(user) {
+ function setCurrentUser(user) {
     localStorage.setItem('user', JSON.stringify(user));
 }
 
-function getCurrentUser() {
+export function getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'));
 }
 
@@ -147,4 +150,3 @@ async function fetchData(route = '', data = {}, methodType) {
         throw new Error(result.message || "Request failed");
     }
 }
-

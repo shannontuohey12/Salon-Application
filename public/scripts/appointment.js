@@ -1,5 +1,6 @@
 let form = document.getElementById("bookAptForm");
 form.addEventListener('submit', bookApt);
+import {getCurrentUser} from "./user.js";
 
 function bookApt(e){
     e.preventDefault(); //default is to page refresh so this stops it
@@ -7,22 +8,29 @@ function bookApt(e){
     let aptType = document.getElementById("aptType").value
     let appointmentDate = document.getElementById("date").value
     let appointmentTime = document.getElementById("time").value
+    let userID = getCurrentUser().userID;
 
 
     if(aptType && appointmentDate && appointmentTime){
         const user = {
             service: aptType,
             appointmentDate: appointmentDate,
-            appointmentTime: appointmentTime
+            appointmentTime: appointmentTime,
+            userID
         }
 
         fetchData('/appointments/bookAppointment', user, 'POST')
         .then(data => {
-            if(!data.message) {
-                window.location = "home.html"
-            }
+
+            console.log("Fetch successful: ", data);
+            
+                localStorage.setItem("appointment", JSON.stringify(user));
+                console.log("redirecting to thank you page...")
+                window.location.href = "thank.html"
+            
         })
         .catch(err => {
+            console.log("Fetch error: ", err);
             let error = document.getElementById("error");
             error.innerText = err.message;
         })  
